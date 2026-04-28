@@ -2,30 +2,31 @@
 
 A mobile application that allows users to record expenses using voice input and automatically extract details using NLP.
 
-## Features
+## 🚀 Features
 
-* Voice-based expense input
+* Voice-based expense recording
+* Automatic data extraction using NLP
 * Manual expense entry
 * Real-time expense tracking
 * Reports and analytics
-* Multi-currency support
 
-## Tech Stack
+## 🛠️ Tech Stack
 
 * Flutter
 * Firebase (Auth, Firestore)
 * REST API (FastAPI backend)
 
-## How to Run
+## ▶️ How to Run
 
 ```bash
 flutter pub get
 flutter run
 ```
 
-## Backend
+## 🔗 Backend
 
-Backend API: https://web-production-0dbaca.up.railway.app
+https://web-production-0dbaca.up.railway.app
+
 
 ## Author
 
