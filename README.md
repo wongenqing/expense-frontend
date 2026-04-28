@@ -1,16 +1,32 @@
-# expensetracker_app
+# Voxpense - Expense Tracker (Frontend)
 
-A new Flutter project.
+A mobile application that allows users to record expenses using voice input and automatically extract details using NLP.
 
-## Getting Started
+## Features
 
-This project is a starting point for a Flutter application.
+* Voice-based expense input
+* Manual expense entry
+* Real-time expense tracking
+* Reports and analytics
+* Multi-currency support
 
-A few resources to get you started if this is your first Flutter project:
+## Tech Stack
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+* Flutter
+* Firebase (Auth, Firestore)
+* REST API (FastAPI backend)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## How to Run
+
+```bash
+flutter pub get
+flutter run
+```
+
+## Backend
+
+Backend API: https://web-production-0dbaca.up.railway.app
+
+## Author
+
+Wong En Qing
