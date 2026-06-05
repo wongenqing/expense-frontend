@@ -183,6 +183,8 @@ class _HomePageState extends State<HomePage> {
                 ],
               ),
 
+              const SizedBox(width: 140),
+
               // Open settings page
               GestureDetector(
                 onTap: () {

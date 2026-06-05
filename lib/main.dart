@@ -1,10 +1,12 @@
 import 'package:expensetracker_app/services/auth_wrapper.dart';
+import 'package:expensetracker_app/services/notification_service.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:expensetracker_app/services/currency_provider.dart';
 import 'package:flutter/services.dart';
 import 'views/pages/voice_input_page.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 /// This navigator key lets the app move between pages
 /// even without using BuildContext (useful for widget-triggered navigation)
@@ -20,6 +22,9 @@ void main() async {
   // Load the user's preferred currency before the app starts
   final currencyProvider = CurrencyProvider();
   await currencyProvider.loadCurrency();
+
+  await NotificationService.initialize();
+  await Permission.notification.request();
 
   // Start the app and provide currency state globally
   runApp(

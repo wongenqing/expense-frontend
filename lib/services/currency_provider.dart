@@ -7,9 +7,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 // - saving/loading user preference
 // - converting amounts between currencies
 class CurrencyProvider with ChangeNotifier {
-
   // Current selected currency code (e.g., MYR, USD)
-  String _currencyCode = "RM";
+  String _currencyCode = "MYR";
 
   // Currency symbol used for display (e.g., RM, $, €)
   String _currencySymbol = "RM";
@@ -40,7 +39,7 @@ class CurrencyProvider with ChangeNotifier {
     final prefs = await SharedPreferences.getInstance();
 
     // Load saved values, fallback to default "RM"
-    _currencyCode = prefs.getString('currencyCode') ?? "RM";
+    _currencyCode = prefs.getString('currencyCode') ?? "MYR";
     _currencySymbol = prefs.getString('currencySymbol') ?? "RM";
 
     // Notify UI to update with loaded currency
@@ -79,5 +78,12 @@ class CurrencyProvider with ChangeNotifier {
     if (rate == 0) return amount;
 
     return amount / rate;
+  }
+
+  double convertFrom({required double amount, required String fromCurrency}) {
+    final fromRate = exchangeRates[fromCurrency] ?? 1.0;
+    final toRate = exchangeRates[_currencyCode] ?? 1.0;
+
+    return amount / fromRate * toRate;
   }
 }

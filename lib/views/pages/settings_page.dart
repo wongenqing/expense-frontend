@@ -17,7 +17,6 @@ class SettingsPage extends StatefulWidget {
 }
 
 class _SettingsPageState extends State<SettingsPage> {
-
   /// Firebase authenticated user
   User? get user => FirebaseAuth.instance.currentUser;
 
@@ -129,8 +128,10 @@ class _SettingsPageState extends State<SettingsPage> {
           child: ElevatedButton(
             onPressed: () => Navigator.pop(context, false),
             style: _buttonStyle(Colors.grey[300]!),
-            child: const Text("Cancel",
-                style: TextStyle(color: Colors.black, fontSize: 12)),
+            child: const Text(
+              "Cancel",
+              style: TextStyle(color: Colors.black, fontSize: 12),
+            ),
           ),
         ),
         const SizedBox(width: 12),
@@ -138,8 +139,10 @@ class _SettingsPageState extends State<SettingsPage> {
           child: ElevatedButton(
             onPressed: () => Navigator.pop(context, true),
             style: _buttonStyle(Colors.red),
-            child: const Text("Logout",
-                style: TextStyle(color: Colors.white, fontSize: 12)),
+            child: const Text(
+              "Logout",
+              style: TextStyle(color: Colors.white, fontSize: 12),
+            ),
           ),
         ),
       ],
@@ -217,7 +220,7 @@ class _SettingsPageState extends State<SettingsPage> {
                   _buildLogoutButton(),
                   const SizedBox(height: 20),
                   const Text(
-                    "Voxpense Version 1.0.1",
+                    "Voxpense Version 1.1.1",
                     style: TextStyle(color: Colors.grey, fontSize: 10),
                   ),
                 ],
@@ -245,9 +248,10 @@ class _SettingsPageState extends State<SettingsPage> {
             child: Text(
               "Settings",
               style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold),
+                color: Colors.white,
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+              ),
             ),
           ),
         ],
@@ -267,12 +271,15 @@ class _SettingsPageState extends State<SettingsPage> {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(name,
-                      style: const TextStyle(fontWeight: FontWeight.bold)),
+                  Text(
+                    name,
+                    style: const TextStyle(fontWeight: FontWeight.bold),
+                  ),
                   const SizedBox(height: 4),
-                  Text(email,
-                      style:
-                          const TextStyle(color: Colors.grey, fontSize: 12)),
+                  Text(
+                    email,
+                    style: const TextStyle(color: Colors.grey, fontSize: 12),
+                  ),
                 ],
               ),
             ],
@@ -295,10 +302,7 @@ class _SettingsPageState extends State<SettingsPage> {
     }
 
     if (isValidImageUrl(imgURL)) {
-      return CircleAvatar(
-        radius: 25,
-        backgroundImage: NetworkImage(imgURL!),
-      );
+      return CircleAvatar(radius: 25, backgroundImage: NetworkImage(imgURL!));
     }
 
     return Container(
@@ -336,8 +340,7 @@ class _SettingsPageState extends State<SettingsPage> {
         style: _buttonStyle(Colors.grey[200]!),
         child: const Text(
           "Manage Profile",
-          style: TextStyle(
-              fontWeight: FontWeight.bold, color: Colors.black),
+          style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
         ),
       ),
     );
@@ -351,12 +354,16 @@ class _SettingsPageState extends State<SettingsPage> {
       Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text("Preferences",
-              style: TextStyle(fontWeight: FontWeight.bold)),
+          const Text(
+            "Preferences",
+            style: TextStyle(fontWeight: FontWeight.bold),
+          ),
           ListTile(
             leading: const Icon(Icons.public),
-            title: const Text("Currency",
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13)),
+            title: const Text(
+              "Currency",
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13),
+            ),
             subtitle: Text(
               _getCurrencyDisplay(
                 currencyProvider.currencyCode,
@@ -381,13 +388,18 @@ class _SettingsPageState extends State<SettingsPage> {
       Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text("Support",
-              style: TextStyle(fontWeight: FontWeight.bold)),
+          const Text("Support", style: TextStyle(fontWeight: FontWeight.bold)),
           _navTile("Help Center", Icons.help_outline, const HelpCenterPage()),
-          _navTile("Privacy Policy", Icons.privacy_tip_outlined,
-              const PrivacyPolicyPage()),
-          _navTile("Terms of Service", Icons.description_outlined,
-              const TermsOfServicePage()),
+          _navTile(
+            "Privacy Policy",
+            Icons.privacy_tip_outlined,
+            const PrivacyPolicyPage(),
+          ),
+          _navTile(
+            "Terms of Service",
+            Icons.description_outlined,
+            const TermsOfServicePage(),
+          ),
         ],
       ),
     );
@@ -397,13 +409,13 @@ class _SettingsPageState extends State<SettingsPage> {
   Widget _navTile(String title, IconData icon, Widget page) {
     return ListTile(
       leading: Icon(icon),
-      title: Text(title,
-          style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 13)),
-      trailing: const Icon(Icons.chevron_right),
-      onTap: () => Navigator.push(
-        context,
-        MaterialPageRoute(builder: (_) => page),
+      title: Text(
+        title,
+        style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 13),
       ),
+      trailing: const Icon(Icons.chevron_right),
+      onTap: () =>
+          Navigator.push(context, MaterialPageRoute(builder: (_) => page)),
     );
   }
 
@@ -414,15 +426,18 @@ class _SettingsPageState extends State<SettingsPage> {
       child: ElevatedButton.icon(
         onPressed: logout,
         icon: const Icon(Icons.logout),
-        label: const Text("Logout",
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13)),
+        label: const Text(
+          "Logout",
+          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13),
+        ),
         style: ElevatedButton.styleFrom(
           backgroundColor: Colors.red[50],
           foregroundColor: Colors.red,
           elevation: 0,
           padding: const EdgeInsets.symmetric(vertical: 16),
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(16),
+          ),
         ),
       ),
     );
@@ -436,9 +451,7 @@ class _SettingsPageState extends State<SettingsPage> {
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(20),
-        boxShadow: const [
-          BoxShadow(color: Colors.black12, blurRadius: 10)
-        ],
+        boxShadow: const [BoxShadow(color: Colors.black12, blurRadius: 10)],
       ),
       child: child,
     );

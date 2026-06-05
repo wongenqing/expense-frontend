@@ -3,8 +3,8 @@ import 'package:expensetracker_app/views/pages/voice_input_page.dart';
 import 'package:flutter/material.dart';
 import 'package:expensetracker_app/views/pages/home_page.dart';
 import 'package:expensetracker_app/views/pages/transactions_page.dart';
-import 'package:expensetracker_app/views/pages/analytics_page.dart';
-import 'package:expensetracker_app/views/pages/reports_page.dart';
+import 'package:expensetracker_app/views/pages/insights_page.dart';
+import 'package:expensetracker_app/views/pages/budget_page.dart';
 
 class NavbarWidget extends StatefulWidget {
   const NavbarWidget({super.key});
@@ -27,8 +27,8 @@ class _NavbarWidgetState extends State<NavbarWidget> {
   final List<Widget> pages = const [
     HomePage(),
     TransactionsPage(),
-    AnalyticsPage(),
-    ReportsPage(),
+    InsightsPage(),
+    BudgetPage(),
   ];
 
   /// Updates the selected tab
@@ -265,8 +265,8 @@ class _NavbarWidgetState extends State<NavbarWidget> {
             buildNavItem(Icons.home_outlined, "Home", 0),
             buildNavItem(Icons.history, "Transactions", 1),
             const SizedBox(width: 50),
-            buildNavItem(Icons.pie_chart_outline, "Analytics", 2),
-            buildNavItem(Icons.description_outlined, "Reports", 3),
+            buildNavItem(Icons.insights, "Insights", 2),
+            buildNavItem(Icons.track_changes, "Budget", 3),
           ],
         ),
       ),

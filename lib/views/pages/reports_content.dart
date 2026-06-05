@@ -11,14 +11,14 @@ import 'package:expensetracker_app/services/currency_provider.dart';
 
 // Main page for exporting expense reports
 // Supports quick monthly export and custom date range export
-class ReportsPage extends StatefulWidget {
-  const ReportsPage({super.key});
+class ReportsContent extends StatefulWidget {
+  const ReportsContent({super.key});
 
   @override
-  State<ReportsPage> createState() => _ReportsPageState();
+  State<ReportsContent> createState() => _ReportsContentState();
 }
 
-class _ReportsPageState extends State<ReportsPage> {
+class _ReportsContentState extends State<ReportsContent> {
   // Default custom report date range
   DateTime fromDate = DateTime(2026, 1, 1);
   DateTime toDate = DateTime(2026, 1, 31);
@@ -341,53 +341,22 @@ class _ReportsPageState extends State<ReportsPage> {
   // Main page UI
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: const Color(0xFFF3F4F6),
-      body: Column(
-        children: [
-          // Top header
-          Container(
-            width: double.infinity,
-            padding: const EdgeInsets.fromLTRB(20, 55, 20, 20),
-            decoration: const BoxDecoration(
-              gradient: LinearGradient(
-                colors: [Color(0xFF22C55E), Color(0xFF3B82F6)],
-              ),
-            ),
-            child: const Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+    return Column(
+      children: [
+        // Scrollable page content
+        Expanded(
+          child: SingleChildScrollView(
+            padding: const EdgeInsets.all(20),
+            child: Column(
               children: [
-                Text(
-                  "Reports",
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                Text(
-                  "Export and share your expense reports",
-                  style: TextStyle(color: Colors.white70, fontSize: 12),
-                ),
+                _buildQuickExportCard(),
+                const SizedBox(height: 20),
+                _buildCustomReportCard(),
               ],
             ),
           ),
-
-          // Scrollable page content
-          Expanded(
-            child: SingleChildScrollView(
-              padding: const EdgeInsets.all(20),
-              child: Column(
-                children: [
-                  _buildQuickExportCard(),
-                  const SizedBox(height: 20),
-                  _buildCustomReportCard(),
-                ],
-              ),
-            ),
-          ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 
